@@ -1,8 +1,56 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
+
+    <style>
+  button,
+  select {
+    min-height: 44px;
+    min-width: 44px;
+    margin: 4px;
+  }
+
+  #bookmark-list a {
+    display: inline-block;
+    padding: 12px;
+  }
+
+  #bookmark-list li {
+    margin-bottom: 16px;
+  }
+</style>
+
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shared Bookmarks</title>
     <script type="module" src="script.js"></script>
   </head>
+
   <body>
+    <main>
+      <h1>Shared Bookmarks</h1>
+
+      <label for = "user-select">Choose a user</label>
+      <select id = "user-select"></select>
+
+      <form id="bookmark-form" >
+        <label for="bookmark-url">Bookmark URL:</label>
+        <input  type="url" id="bookmark-url" required>
+
+        <label for="bookmark-title">Bookmark Title:</label>
+        <input  type="text" id="bookmark-title" required>
+
+        <label for="bookmark-description">Bookmark Description:</label>
+        <input  type="text" id="bookmark-description" required>
+
+        <button type="submit"> Add Bookmark</button>
+      </form>
+
+      <h2>Bookmarks</h2>
+      <ul id="bookmark-list"></ul>
+
+    
+    </main>
   </body>
 </html>
