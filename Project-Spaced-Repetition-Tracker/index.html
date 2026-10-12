@@ -3,13 +3,67 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta
+      name="description"
+      content="Plan your study revisions with a spaced repetition tracker."
+    >
     <title>Spaced Repetition Tracker</title>
+    <link rel="stylesheet" href="styles.css">
     <script type="module" src="script.mjs"></script>
   </head>
+
   <body>
     <main>
-      <h1>Spaced Repetition Tracker</h1>
-      <p>Add a study topic to plan your future revision dates.</p>
+      <header>
+        <h1>Spaced Repetition Tracker</h1>
+        <p>Add a study topic to plan your future revision dates.</p>
+      </header>
+
+      <section aria-labelledby="user-heading">
+        <h2 id="user-heading">Choose your user</h2>
+
+        <label for="user-select">Choose a user</label>
+        <select id="user-select">
+          <option value="">Select a user</option>
+          <option value="1">User 1</option>
+          <option value="2">User 2</option>
+          <option value="3">User 3</option>
+          <option value="4">User 4</option>
+          <option value="5">User 5</option>
+        </select>
+      </section>
+
+      <section aria-labelledby="topic-heading">
+        <h2 id="topic-heading">Add a topic</h2>
+
+        <form id="topic-form">
+          <div class="form-field">
+            <label for="topic-name">Topic name</label>
+            <input
+              type="text"
+              id="topic-name"
+              required
+              aria-describedby="topic-help"
+            >
+            <p id="topic-help" class="help">
+              For example: JavaScript arrays.
+            </p>
+          </div>
+
+          <div class="form-field">
+            <label for="study-date">Date studied</label>
+            <input type="date" id="study-date" required>
+          </div>
+
+          <button type="submit">Add topic</button>
+        </form>
+      </section>
+
+      <section aria-labelledby="agenda-heading">
+        <h2 id="agenda-heading">Revision Agenda</h2>
+        <p id="agenda-message" role="status">Please select a user.</p>
+        <ul id="agenda-list"></ul>
+      </section>
     </main>
   </body>
 </html>

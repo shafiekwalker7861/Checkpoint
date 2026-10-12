@@ -1,0 +1,125 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: #f1f5f9;
+  color: #172033;
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+}
+
+main {
+  width: min(100% - 2rem, 760px);
+  margin: 2rem auto;
+}
+
+header {
+  margin-bottom: 2rem;
+}
+
+h1 {
+  font-size: clamp(1.8rem, 5vw, 2.5rem);
+  line-height: 1.2;
+}
+
+h2 {
+  margin-top: 0;
+  font-size: 1.3rem;
+}
+
+section {
+  margin-bottom: 1.5rem;
+  padding: 1.5rem;
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  border-radius: 12px;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.4rem;
+  font-weight: bold;
+}
+
+input,
+select,
+button {
+  font: inherit;
+}
+
+input,
+select {
+  width: 100%;
+  min-width: 0;
+  min-height: 44px;
+  padding: 0.65rem;
+  color: #172033;
+  background: #ffffff;
+  border: 1px solid #64748b;
+  border-radius: 6px;
+}
+
+.form-field {
+  margin-bottom: 1.25rem;
+}
+
+.help {
+  margin: 0.4rem 0 0;
+  color: #475569;
+  font-size: 0.9rem;
+}
+
+button {
+  min-height: 44px;
+  padding: 0.65rem 1.25rem;
+  color: #ffffff;
+  background: #1746a2;
+  border: 0;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #103477;
+}
+
+input:focus-visible,
+select:focus-visible,
+button:focus-visible {
+  outline: 3px solid #172033;
+  outline-offset: 3px;
+}
+
+#agenda-message {
+  margin-bottom: 1rem;
+}
+
+#agenda-list {
+  margin: 0;
+  padding-left: 1.5rem;
+}
+
+#agenda-list li {
+  padding: 0.65rem 0;
+  overflow-wrap: anywhere;
+}
+
+#agenda-list li + li {
+  border-top: 1px solid #e2e8f0;
+}
+
+@media (max-width: 480px) {
+  main {
+    margin: 1rem auto;
+  }
+
+  section {
+    padding: 1rem;
+  }
+
+  button {
+    width: 100%;
+  }
+}
