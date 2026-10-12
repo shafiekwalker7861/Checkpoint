@@ -1,0 +1,64 @@
+name: Test and deploy Spaced Repetition Tracker
+
+on:
+  push:
+    branches: ["main"]
+    paths:
+      - "Project-Spaced-Repetition-Tracker/**"
+      - ".github/workflows/deploy-spaced-repetition.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: spaced-repetition-pages
+  cancel-in-progress: false
+
+jobs:
+  test-and-build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Run unit tests
+        run: node --test Project-Spaced-Repetition-Tracker/utils.test.mjs
+
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+
+      - name: Prepare website files
+        run: |
+          mkdir -p _site
+          cp Project-Spaced-Repetition-Tracker/index.html _site/
+          cp Project-Spaced-Repetition-Tracker/styles.css _site/
+          cp Project-Spaced-Repetition-Tracker/script.mjs _site/
+          cp Project-Spaced-Repetition-Tracker/utils.mjs _site/
+          cp Project-Spaced-Repetition-Tracker/storage.mjs _site/
+
+      - name: Upload website
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    needs: test-and-build
+    runs-on: ubuntu-latest
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - name: Deploy website
+        id: deployment
+        uses: actions/deploy-pages@v4
